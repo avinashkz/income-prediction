@@ -12,18 +12,18 @@ library(tidyverse)
 
 main <- function(){
   
-train <-  read_csv(file = "../data/train.csv")
-test <-  read_csv(file = "../data/test.csv")
+train <-  read_csv(file = "data/train.csv")
+test <-  read_csv(file = "data/test.csv")
 
-headings <- c("age","workclass", "fnlwgt", "education", "age", "maritalStatus",
+headings <- c("age","workclass", "fnlwgt", "education", "education-num", "marital-status",
               "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss",
               "hours-per-week", "native-country", "class")
 
 names(train) <- headings
 names(test) <- headings
 
-write_csv(train, path = "../docs/train.csv")
-write_csv(test, path = "../docs/test.csv")
+write_csv(train, path = "doc/train.csv")
+write_csv(test, path = "doc/test.csv")
 
 }
 
