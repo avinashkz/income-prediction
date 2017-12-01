@@ -8,8 +8,8 @@
 # Usage: Rscript read_data.R
 
 args = commandArgs(trailingOnly = TRUE)
-link_test <- args[1]
-link_train <- args[2]
+link_train <- args[1]
+link_test <- args[2]
 #Read the location where you want to save the file and it will go and save in that location as test.csv and train.csv
 file_path <- args[3]
 

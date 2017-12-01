@@ -8,23 +8,44 @@
 #
 # Usage: Rscript data-processing.R
 
+args = commandArgs(trailingOnly = TRUE)
+#Read the folder location where the data is stored in and the script will read in the test.csv and train.csv from that 
+read_path <- args[1]
+#Read the location where you want to save the pocessed data and it will go and save in that location as test.csv and train.csv
+write_path <- args[2]
+
+
 library(tidyverse)
 
 main <- function(){
   
-train <-  read_csv(file = "data/train.csv")
-test <-  read_csv(file = "data/test.csv")
-
-headings <- c("age","workclass", "fnlwgt", "education", "education-num", "marital-status",
-              "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss",
-              "hours-per-week", "native-country", "class")
-
-names(train) <- headings
-names(test) <- headings
-
-write_csv(train, path = "doc/train.csv")
-write_csv(test, path = "doc/test.csv")
-
+  #creating the path for where raw data is stored
+  load_train <- paste(write_path, "/train.csv", sep = "")
+  load_test <- paste(write_path, "/test.csv", sep = "")  
+  
+  #loading raw dara
+  train <-  read_csv(file = load_train)
+  test <-  read_csv(file = load_test)
+  
+  #Initializing headers
+  headings <- c("age","workclass", "fnlwgt", "education", "education-num", "marital-status",
+                "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss",
+                "hours-per-week", "native-country", "class")
+  
+  #Adding headers
+  names(train) <- headings
+  names(test) <- headings
+  
+  #creating path for saving the file
+  save_train <- paste(write_path, "/train.csv", sep = "")
+  save_test <- paste(write_path, "/test.csv", sep = "")
+  
+  #Save the processed train data
+  write_csv(train, path = save_train)
+  
+  #Save the processed test data
+  write_csv(test, path = save_test)
+  
 }
 
 # call main function
