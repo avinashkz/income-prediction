@@ -28,13 +28,16 @@ main <- function(){
   test <-  read_csv(file = load_test)
   
   #Initializing headers
-  headings <- c("age","workclass", "fnlwgt", "education", "education-num", "marital-status",
-                "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss",
-                "hours-per-week", "native-country", "class")
+  headings <- c("age","workclass", "fnlwgt", "education", "educationNum", "maritalStatus",
+                "occupation", "relationship", "race", "sex", "capitalGain", "capitalLoss",
+                "hoursPerWeek", "nativeCountry", "class")
   
   #Adding headers
   names(train) <- headings
   names(test) <- headings
+  
+  train <- train %>% mutate(k50 = if_else(class == ">50K",true = 1, false = 0))
+  test <- test %>% mutate(k50 = if_else(class == ">50K",true = 1, false = 0))
   
   #creating path for saving the file
   save_train <- paste(write_path, "/train.csv", sep = "")
