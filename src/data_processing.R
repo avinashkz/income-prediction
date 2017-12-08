@@ -6,10 +6,10 @@
 # and adds heading for both the train and test
 # data sets.
 #
-# Usage: Rscript data-processing.R
+# Usage: Rscript data-processing.R save_folder
 
 args = commandArgs(trailingOnly = TRUE)
-#Read the location where you want to save the pocessed data and it will go and save in that location as test.csv and train.csv
+#Read the location where pocessed data files will be saved as test.csv and train.csv
 write_path <- args[1]
 
 
