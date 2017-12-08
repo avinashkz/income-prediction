@@ -4,27 +4,28 @@
 #
 # This script reads the training data and generates data visualisaions  
 #
-# Usage: Rscript data_viz.R
+# Usage: Rscript data_viz.R read_path write_path
 
 args = commandArgs(trailingOnly = TRUE)
 #Read the folder location where the data is stored in and the script will read in the train.csv from that folder.
-data_path <- args[1]
+read_path <- args[1]
+write_path <- args[2]
 
 library(tidyverse)
 library(forcats)
 
 main <- function() {
   
-  load_train <- paste(data_path, "/train.csv", sep = "")
+  load_train <- paste(read_path, "/train.csv", sep = "")
   
-  train <-  read_csv(file = "../doc/train.csv")
+  #train <-  read_csv(file = "../doc/train.csv")
   train <-  read_csv(file = load_train) 
   
   train %>% ggplot(aes(age)) +
     geom_histogram(aes(fill = class), bins = 25, color = "black") +
     scale_fill_brewer(palette = "Set2") + theme_bw()
   
-  ggsave(filename = "age.png", path = "doc/")
+  ggsave(filename = "age.png", path = paste(write_path,"/", sep = ""))
   
   for (i in 1:ncol(train)-2){
     val <- variable_type(train[,i])
