@@ -5,7 +5,7 @@
 # This script reads the raw data from the UCI 
 # repository.
 #
-# Usage: Rscript read_data.R
+# Usage: Rscript read_data.R train-url test-url
 
 args = commandArgs(trailingOnly = TRUE)
 link_train <- args[1]
