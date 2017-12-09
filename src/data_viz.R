@@ -23,15 +23,15 @@ main <- function() {
   
   
   #train <-  read_csv(file = "../doc/train.csv")
+  #train is a global variable
   train <<-  read_csv(file = load_train) 
   
-  train %>% ggplot() +
-    geom_histogram(aes(Age, fill = Class), bins = 25, color = "black") +
-    scale_fill_brewer(palette = "Set2") + theme_bw()
-  
+  g <- train %>% ggplot() +
+    geom_histogram(aes(Age, fill = Class), bins = 25, color = "black") + labs(title = "Histogram of Age", y = "Count") +
+    scale_fill_brewer(palette = "Set2") + theme_bw() + theme(plot.title = element_text(hjust = 0.5))
   ggsave(filename = "age.png", path = "doc")
   
-  for (i in 1:(ncol(train)-1)){
+  for (i in 1:(ncol(train)-2)){
     val <- variable_type(train[,i])
     if (val == "categorical") {
       categorical_plots(train[,c(i,15)], i)
@@ -45,13 +45,18 @@ categorical_plots <- function(x, i){
     summarise(count = n()) %>% ggplot() +
     geom_col(aes(x = fct_reorder(ax1,count, .desc = TRUE),
                  y = count, fill = class), alpha = 0.7) +
-    coord_flip() +
-    xlab(colnames(train[,i])) +
+    xlab(colnames(train[,i])) + 
+    labs(title = paste("Count Plot of" ,colnames(train[,i])), y = "Count") +
     scale_fill_brewer(palette = "Set2") +
-    theme_bw()
-  
-  ggsave(filename = paste(colnames(train[,i]),".png",sep = ""), path = write_path)
-  plot(p)
+    theme_bw() + theme(plot.title = element_text(hjust = 0.5))
+    
+    if(n_distinct(train[,i]) > 3){
+     ggsave(plot = p + coord_flip(), filename = paste(colnames(train[,i]),".png",sep = ""), path = write_path)
+    }
+    else
+    {
+      ggsave(filename = paste(colnames(train[,i]),".png",sep = ""), path = write_path)
+    }
 }
 
 variable_type <- function(x){
