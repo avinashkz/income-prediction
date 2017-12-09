@@ -19,3 +19,6 @@ data_processing: read_data
 
 data_viz: data_processing
 	Rscript src/data_viz.R $(data_path) $(data_path)
+
+remove:
+	rm doc/*.png
