@@ -32,8 +32,6 @@ main <- function(){
   #Adding headers
   names(train) <- headings
   names(test) <- headings
-  print("hello")
-  
   
   train <- train %>% mutate(Salary_Class = if_else(Class == ">50K",true = 1, false = 0))
   test <- test %>% mutate(Salary_Class = if_else(Class == ">50K",true = 1, false = 0))
