@@ -51,11 +51,11 @@ categorical_plots <- function(x, i){
     theme_bw() + theme(plot.title = element_text(hjust = 0.5))
     
     if(n_distinct(train[,i]) > 3){
-     ggsave(plot = p + coord_flip(), filename = paste(colnames(train[,i]),".png",sep = ""), path = write_path)
+     ggsave(plot = p + coord_flip(), filename = paste(tolower(colnames(train[,i])),".png",sep = ""), path = write_path)
     }
     else
     {
-      ggsave(filename = paste(colnames(train[,i]),".png",sep = ""), path = write_path)
+      ggsave(filename = paste(tolower(colnames(train[,i])),".png",sep = ""), path = write_path)
     }
 }
 
