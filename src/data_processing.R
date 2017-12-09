@@ -12,7 +12,6 @@ args = commandArgs(trailingOnly = TRUE)
 #Read the location where pocessed data files will be saved as test.csv and train.csv
 write_path <- args[1]
 
-
 library(tidyverse)
 
 main <- function(){
@@ -33,9 +32,11 @@ main <- function(){
   #Adding headers
   names(train) <- headings
   names(test) <- headings
+  print("hello")
   
-  train <- train %>% mutate(k50 = if_else(class == "Salary_Class",true = 1, false = 0))
-  test <- test %>% mutate(k50 = if_else(class == "Salary_Class",true = 1, false = 0))
+  
+  train <- train %>% mutate(Salary_Class = if_else(Class == ">50K",true = 1, false = 0))
+  test <- test %>% mutate(Salary_Class = if_else(Class == ">50K",true = 1, false = 0))
   
   #creating path for saving the file
   save_train <- paste(write_path, "/train.csv", sep = "")
