@@ -7,7 +7,7 @@
 | Number of Records:         | 488442               |
 | Number of Variables:       | 14                   |
 | Attribute Characteristics: | Categorical, Integer |
-| Missing Values?            | Yes                  |
+| Missing Values:            | Yes                  |
 | Associated Tasks:          | Classification       |
 | Date Collected:            | 1996-05-01           |
 
