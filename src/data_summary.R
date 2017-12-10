@@ -5,7 +5,8 @@
 # This script reads the training data  
 # and creates a summary csv file.
 #
-# Usage: Rscript data_summary.R
+# Usage: Rscript data_summary.R --read=read_path --write=write_path
+
 
 #Read the folder location where the data is stored in and the script will read in the train.csv from that folder.
 #Read the location where you want to save the summary file and it will go and save in that location data_summary.csv
