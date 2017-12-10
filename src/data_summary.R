@@ -7,13 +7,18 @@
 #
 # Usage: Rscript data_summary.R
 
-args = commandArgs(trailingOnly = TRUE)
 #Read the folder location where the data is stored in and the script will read in the train.csv from that folder.
-read_path <- args[1]
-#read_path <- "doc"
 #Read the location where you want to save the summary file and it will go and save in that location data_summary.csv
-write_path <- args[2]
-#write_path <- "doc"
+library(optparse)
+
+option_list <- list(
+  make_option("--read", type = "character", default = "doc"),
+  make_option("--write", type = "character", default = "doc"))
+
+opt <- parse_args(OptionParser(option_list = option_list))
+
+read_path <- opt$read
+write_path <- opt$write
 
 library(tidyverse)
 
