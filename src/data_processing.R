@@ -6,7 +6,7 @@
 # and adds heading for both the train and test
 # data sets.
 #
-# Usage: Rscript data-processing.R save_folder
+# Usage: Rscript data-processing.R --write=write_folder
 
 library(optparse)
 #Read the location where pocessed data files will be saved as test.csv and train.csv
