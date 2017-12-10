@@ -7,9 +7,15 @@
 #
 # Usage: Rscript read_data.R train-url test-url
 
-args = commandArgs(trailingOnly = TRUE)
-link_train <- args[1]
-link_test <- args[2]
+library(optparse)
+option_list <- list(
+  make_option("--read", type = "character", default = "http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data"),
+  make_option("--write", type = "character", default = "http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.test"))
+
+opt <- parse_args(OptionParser(option_list = option_list))
+
+link_train <- opt$read
+link_test <- opt$write
 
 library(tidyverse)
 
