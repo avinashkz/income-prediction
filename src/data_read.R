@@ -5,7 +5,7 @@
 # This script reads the raw data from the UCI 
 # repository.
 #
-# Usage: Rscript read_data.R train-url test-url
+# Usage: Rscript data_read.R --train=train_url --test=test_url
 
 library(optparse)
 option_list <- list(
