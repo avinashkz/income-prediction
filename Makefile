@@ -9,7 +9,7 @@ test_link = http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult
 data_path = doc
 
 
-all: data_viz
+all: report
 
 read_data:
 	Rscript src/data_read.R $(train_link) $(test_link)
@@ -17,8 +17,15 @@ read_data:
 data_processing: read_data
 	Rscript src/data_processing.R $(data_path) $(data_path)
 
+data_summary:
+	Rscript src/data_summary.R $(data_path) $(data_path)
+
 data_viz: data_processing
 	Rscript src/data_viz.R $(data_path) $(data_path)
 
+report: data_viz data_summary
+	Rscript -e 'ezknitr::ezknit("src/report.Rmd", out_dir = "results")'
+
 remove:
 	rm doc/*.png
+
