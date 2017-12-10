@@ -8,11 +8,14 @@
 #
 # Usage: Rscript data-processing.R save_folder
 
-args = commandArgs(trailingOnly = TRUE)
+library(optparse)
 #Read the location where pocessed data files will be saved as test.csv and train.csv
-write_path <- args[1]
+option_list <- list(
+  make_option("--write", type = "character", default = "doc"))
 
-library(tidyverse)
+opt <- parse_args(OptionParser(option_list = option_list))
+
+write_path <- opt$write
 
 main <- function(){
   
