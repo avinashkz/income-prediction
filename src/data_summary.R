@@ -22,25 +22,21 @@ main <- function() {
 load_train <- paste(write_path, "/train.csv", sep = "")
 
 train <-  read_csv(file = load_train)  
-print(head(train))
+#train <- read_csv(file = "doc/train.csv")
+#print(head(train))
 
-head1 <- train[1] %>% summary %>% as_data_frame() %>%
+header <- train[1] %>% summary %>% as_data_frame() %>%
   select(n) %>% mutate_if(is.factor, as.character) %>%
   separate(col = n, into = c("Features", "values"), sep = ":") %>%
   select(Features)
 
-row.names(head1) <- NULL
-
-head2 <- train[2] %>% summary %>% as_data_frame() %>%
-  select(n) %>% mutate_if(is.factor, as.character) %>%
-  separate(col = n, into = c("Features", "values"), sep = ":") %>%
-  select(Features)
-
-row.names(head2) <- NULL
-
-chead <- bind_rows(head1, head2)
+row.names(header) <- NULL
 
 for (i in 1:length(train)){
+  
+  val <- variable_type(train[,i])
+  if (val == "continous") {
+    
   d1 <- train[i] %>% summary %>% as_data_frame()
   y <- d1 %>% select(n) %>% mutate_if(is.factor, as.character) %>%
     separate(col = n, into = c("Features", "values"), sep = ":")
@@ -49,13 +45,24 @@ for (i in 1:length(train)){
   
   colnames(y) <- c("Features", colnames(train[i]))
   
-  chead<- left_join(chead, y) 
+  header <- left_join(header, y) 
+  }
 }
 
 save_train <- paste(write_path, "/data_summary.csv", sep = "")
 
 #Save the summarised data in a csv file
-write_csv(x = chead, path = save_train)
+write_csv(x = header, path = save_train)
 }
+
+variable_type <- function(x){
+  vtype <- typeof(x[[1]][1])
+  col_name <- colnames(x)
+  exclude_list = c()
+  if (vtype == "character") return("categorical")
+  else return("continous")
+}
+
+
 
 main()
