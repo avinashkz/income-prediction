@@ -44,4 +44,6 @@ The scripts should be run in the order specified below. All the arguments are sp
 
 4. Rscript data_viz.R --read=read_path --write=write_path
 
-5. Rscript -e 'rmarkdown::render("src/report.Rmd", output_dir = "results")'
+5. python 3 model.py
+
+6. Rscript -e 'rmarkdown::render("src/report.Rmd", output_dir = "results")'
