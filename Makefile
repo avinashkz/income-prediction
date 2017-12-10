@@ -15,7 +15,7 @@ read_data:
 	Rscript src/data_read.R $(train_link) $(test_link)
 
 data_processing: read_data
-	Rscript src/data_processing.R $(data_path) $(data_path)
+	Rscript src/data_processing.R $(data_path)
 
 data_summary:
 	Rscript src/data_summary.R $(data_path) $(data_path)
@@ -24,7 +24,7 @@ data_viz: data_processing
 	Rscript src/data_viz.R $(data_path) $(data_path)
 
 report: data_viz data_summary
-	Rscript -e 'ezknitr::ezknit("src/report.Rmd", out_dir = "results")'
+	Rscript -e 'rmarkdown::render("src/report.Rmd", output_dir = "results")'
 
 remove:
 	rm doc/*.png
