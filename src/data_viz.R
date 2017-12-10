@@ -6,13 +6,7 @@
 #
 # Usage: Rscript data_viz.R --read=read_path --write=write_path
 
-#args = commandArgs(trailingOnly = TRUE)
 #Read the folder location where the data is stored in and the script will read in the train.csv from that folder.
-#read_path <- "doc"
-#write_path <- "doc"
-#read_path <- args[1]
-#write_path <- args[2]
-
 library(optparse)
 
 option_list <- list(
@@ -31,10 +25,10 @@ load_train <- paste(read_path, "/train.csv", sep = "")
 
 main <- function() {
   
-  #train is a global variable
+  #read dataset into train as global variable
   train <<-  read_csv(file = load_train) 
   
-  
+  #Histogram for age variable
   g <- train %>% ggplot() +
     geom_histogram(aes(Age, fill = Class), bins = 25, color = "black", alpha = 0.7) + 
     labs(title = "Histogram for Age", y = "Count") +
@@ -45,6 +39,7 @@ main <- function() {
   
   ggsave(filename = "age.png", path = "doc")
   
+  #Proportion plot for age variable
   q <- train %>% ggplot() +
     geom_histogram(aes(Age, fill = Class), bins = 25, color = "black", position = "fill", alpha = 0.7) + 
     labs(title = "Proportions for Age", y = "Proportion") +
@@ -55,6 +50,7 @@ main <- function() {
   
   ggsave(filename = "age_prop.png", path = "doc")  
   
+  #Histogram for hours per week variable
   train %>% ggplot() +
     geom_histogram(aes(Hours_Per_Week, fill = Class), bins = 25, color = "black", alpha = 0.7) + 
     labs(title = "Histogram for Hours Per Week", y = "Proportion") +
@@ -65,6 +61,7 @@ main <- function() {
   
   ggsave(filename = "hours.png", path = "doc")  
   
+  #Proportion plot for hours per week variable
   train %>% ggplot() +
     geom_histogram(aes(Hours_Per_Week, fill = Class), bins = 25, color = "black", position = "fill", alpha = 0.7) + 
     labs(title = "Proportions for Hours Per Week", y = "Proportion") +
@@ -75,6 +72,7 @@ main <- function() {
   
   ggsave(filename = "hours_prop.png", path = "doc")  
   
+  #Plot Bar and Proportion plots for all categorical variables.
   for (i in 1:(ncol(train)-2)){
     val <- variable_type(train[,i])
     if (val == "categorical") {
@@ -89,6 +87,7 @@ categorical_plots <- function(x, i){
   
   colnames(x) <- c("ax1", "Class")
   
+  #Bar plot
   p <-  x %>% group_by(ax1, Class) %>%
     summarise(count = n()) %>% ggplot() +
     geom_col(aes(x = fct_reorder(ax1,count, .desc = TRUE),
@@ -100,6 +99,7 @@ categorical_plots <- function(x, i){
                        axis.text = element_text(size = 12), 
                        axis.title = element_text(size = 14))
   
+  #Proportion Plot
   q <- x %>% group_by(ax1) %>% mutate(count = n()) %>% 
     ggplot(aes(fct_reorder(ax1,count, .desc = TRUE))) +
     geom_bar(aes(y = (..count..)/sum(..count..), fill = Class), position = "fill", color = "black", alpha = 0.7) +
@@ -110,7 +110,7 @@ categorical_plots <- function(x, i){
                        axis.text = element_text(size = 12), 
                        axis.title = element_text(size = 14))
   
-
+  #Save files
     if(n_distinct(train[,i]) > 3){
      ggsave(plot = p + coord_flip(),
             filename = paste(tolower(colnames(train[,i])),".png",sep = ""),
@@ -142,6 +142,7 @@ variable_type <- function(x){
     else return("continous")}
 }
 
+#Inverse of %in% 
 '%!in%' <- function(x,y) {!('%in%'(x,y))}
 
 # call main function
