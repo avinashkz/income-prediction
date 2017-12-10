@@ -9,13 +9,13 @@
 
 library(optparse)
 option_list <- list(
-  make_option("--read", type = "character", default = "http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data"),
-  make_option("--write", type = "character", default = "http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.test"))
+  make_option("--train", type = "character", default = "http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data"),
+  make_option("--test", type = "character", default = "http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.test"))
 
 opt <- parse_args(OptionParser(option_list = option_list))
 
-link_train <- opt$read
-link_test <- opt$write
+link_train <- opt$train
+link_test <- opt$test
 
 library(tidyverse)
 
