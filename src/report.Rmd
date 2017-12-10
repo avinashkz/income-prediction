@@ -1,0 +1,20 @@
+---
+title: "Income Prediction Report"
+author: "Avinash"
+date: "29/11/2017"
+output: html_document
+---
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(knitr)
+```
+
+```{r}
+summary_df <- read.csv("doc/data_summary.csv")
+
+kable(summary_df[1:10])
+kable(summary_df[c(1,11:17)])
+
+```
+
