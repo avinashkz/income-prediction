@@ -15,6 +15,7 @@
 ## Question
 
 Is it possible to correctly identify which `salary-class`(greater than or less than $50k) a person belongs to based on the features such as `age`, `workclass`, `final-weight`, `education`, `education-number`, `marital-status`, `occupation`, `relationship`, `race`, `sex`, `capital-gain`, `capital-loss`, `hours-per-week` and `native-country` ?
+
 ## Hypothesis
 
 The hypothesis is that it should be able to accurately identify the `salary-class` of a person based on the given features.
