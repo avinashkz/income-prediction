@@ -11,21 +11,28 @@ data_path = doc
 
 all: report
 
+#To read the data in from the URL. The arguments are optional and have been stored as variables in the makefile.
 read_data:
-	Rscript src/data_read.R $(train_link) $(test_link)
+	Rscript src/data_read.R --train=$(train_link) --test=$(test_link)
 
+#To process the raw data. 
 data_processing: read_data
-	Rscript src/data_processing.R $(data_path)
+	Rscript src/data_processing.R --write=$(data_path)
 
+#To generate a summary of all the continuous variable
 data_summary:
-	Rscript src/data_summary.R $(data_path) $(data_path)
+	Rscript src/data_summary.R --read=$(data_path) --write=$(data_path)
 
+#To generate various plots of the dataset.
 data_viz: data_processing
-	Rscript src/data_viz.R $(data_path) $(data_path)
+	Rscript src/data_viz.R --read=$(data_path) --write=$(data_path)
 
+#To create the report.
 report: data_viz data_summary
 	Rscript -e 'rmarkdown::render("src/report.Rmd", output_dir = "results")'
 
+#To delete all the files created.
 remove:
 	rm doc/*.png
+	rm result/results.*
 
