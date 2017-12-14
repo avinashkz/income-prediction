@@ -32,7 +32,12 @@ report: data_viz data_summary
 	Rscript -e 'rmarkdown::render("src/report.Rmd", output_dir = "results")'
 
 #To delete all the files created.
-remove:
-	rm doc/*.png
-	rm result/results.*
+remove:	clean
+	rm data/*
+
+#To delete all the files created for analysis
+clean:
+	rm results/*
+	rm doc/*
+	
 
