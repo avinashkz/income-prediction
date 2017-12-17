@@ -36,6 +36,7 @@ The project aims to classify people into two groups, i.e. who earn **more than $
 
 The scripts should be run in the order specified below. All the arguments are specified with default values. If required, all the arguments that are read in by the scripts are specified below. By default, the raw data are in the data folder, and the processed data and images will be stored in the doc folder. The rendered documents are stored in the results folder. These can be modified using the arguments for the scripts.
 
+### Run Scripts Individually
 
 1. Rscript data_read.R --train=train_url --test=test_url
 
@@ -48,3 +49,35 @@ The scripts should be run in the order specified below. All the arguments are sp
 5. python3 model.py
 
 6. Rscript -e 'rmarkdown::render("src/report.Rmd", output_dir = "results")'
+
+### Run Scripts using Makefile
+
+*make all* -> For running all the files.
+
+*make clean* -> To delete all the files created.
+
+### How to Run Project in Docker
+
+Link to Docker Repo : [income-prediction-with-census-data](https://hub.docker.com/r/avinashkz/income-prediction-with-census-data/)
+
+1. Docker Pull Command : *docker pull avinashkz/income-prediction-with-census-data*
+
+2. *docker run --rm -it -v < repo local path >:/home/income-prediction avinashkz/income-prediction-with-census-data /bin/bash*
+
+3. *cd home/income-prediction*
+
+4. *make all*
+
+5. *make clean*
+
+### Run using *Packrat* and *conda env*
+
+1. Run *income-prediction.Rproj* to install all the packages I used for my project.
+
+2. conda env create -f environment.yml
+
+3. source activate income
+
+4. *make all*
+
+5. *make clean*
