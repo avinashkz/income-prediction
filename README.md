@@ -60,6 +60,8 @@ The scripts should be run in the order specified below. All the arguments are sp
 
 Link to Docker Repo : [income-prediction-with-census-data](https://hub.docker.com/r/avinashkz/income-prediction-with-census-data/)
 
+Run the following commands in terminal in the given order:
+
 1. Docker Pull Command : *docker pull avinashkz/income-prediction-with-census-data*
 
 2. *docker run --rm -it -v < repo local path >:/home/income-prediction avinashkz/income-prediction-with-census-data /bin/bash*
