@@ -27,8 +27,12 @@ data_summary:
 data_viz: data_processing
 	Rscript src/data_viz.R --read=$(data_path) --write=$(data_path)
 
+#To create confusion matrix
+matrix:
+	python3 src/model.py
+
 #To create the report.
-report: data_viz data_summary
+report: data_viz data_summary matrix
 	Rscript -e 'rmarkdown::render("src/report.Rmd", output_dir = "results")'
 
 #To delete all the files created.
