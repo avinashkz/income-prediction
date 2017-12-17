@@ -6,6 +6,7 @@ FROM rocker/tidyverse
 
 # then install the ezknitr packages
 #RUN Rscript -e "install.packages('ezknitr', repos = 'https://mran.revolutionanalytics.com/snapshot/2017-12-11')"
+RUN Rscript -e "install.packages('optparse', repos = 'http://cran.us.r-project.org')"
 
 # install python 3
 RUN apt-get update \
