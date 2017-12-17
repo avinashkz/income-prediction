@@ -7,5 +7,6 @@ CONTRIBUTING.md
 packrat/lib*/
 .Rprofile
 .Rhistory
-.Rproj.user
-packrat/src/
+packrat/src
+src/.Rhistory
+.ipynb_checkpoints/

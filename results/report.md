@@ -15,6 +15,15 @@ text-align: center;
 
 
 
+## Question
+
+Is it possible to correctly identify which `salary-class`(greater than or less than $50k) a person belongs to based on the features such as `age`, `workclass`, `final-weight`, `education`, `education-number`, `marital-status`, `occupation`, `relationship`, `race`, `sex`, `capital-gain`, `capital-loss`, `hours-per-week` and `native-country` ?
+
+## Hypothesis
+
+The hypothesis is that it should be able to accurately identify the `salary-class` of a person based on the given features.
+
+
 ## Raw Data Obtained
 
 A quick look at the data obtained from the UCI Machine Learning Reposiotry:
@@ -135,8 +144,7 @@ Majority of the people work in `Private` sector and about one-fourth of the peop
 
                         Actual Less than 50   Actual More than 50
 ---------------------  --------------------  --------------------
-Predict Less than 50                  14340                  1941
+Predict Less than 50                  14337                  1944
 Predict More than 50                      0                     0
-
 
 When a model is created using only the age and hours a person works per week then an accuracy of 88% is obtained but this is obtained by classifying everying person as earning less than $50,000.
