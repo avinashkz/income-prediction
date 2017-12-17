@@ -5,3 +5,7 @@ CONDUCT.md
 CONTRIBUTING.md
 .Rproj.user
 packrat/lib*/
+.Rprofile
+.Rhistory
+.Rproj.user
+packrat/src/
