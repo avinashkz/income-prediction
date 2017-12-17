@@ -74,12 +74,14 @@ Run the following commands in terminal in the given order:
 
 ### Run using *Packrat* and *conda env*
 
-1. Run *income-prediction.Rproj* to install all the packages I used for my project.
+1. Open *income-prediction.Rproj*.
 
-2. conda env create -f environment.yml
+2. packrat::restore()
 
-3. source activate income
+3. conda env create -f environment.yml
 
-4. *make all*
+4. source activate income
 
-5. *make clean* -> To delete all the files created
+5. *make all*
+
+6. *make clean* -> To delete all the files created
