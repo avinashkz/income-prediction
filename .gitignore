@@ -1,12 +1,13 @@
+packrat/lib*/
+.Rproj.user
 m2.Rmd
 python_test.ipynb
 CITATION.md
 CONDUCT.md
 CONTRIBUTING.md
-.Rproj.user
-packrat/lib*/
-.Rprofile
-.Rhistory
+packrat/lib*
 packrat/src
 src/.Rhistory
+.Rhistory
+.Rprofile
 .ipynb_checkpoints/
