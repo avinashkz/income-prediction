@@ -144,7 +144,7 @@ Majority of the people work in `Private` sector and about one-fourth of the peop
 
                         Actual Less than 50   Actual More than 50
 ---------------------  --------------------  --------------------
-Predict Less than 50                  14337                  1944
+Predict Less than 50                  14332                  1949
 Predict More than 50                      0                     0
 
 When a model is created using only the age and hours a person works per week then an accuracy of 88% is obtained but this is obtained by classifying everying person as earning less than $50,000.
