@@ -70,7 +70,7 @@ Run the following commands in terminal in the given order:
 
 4. *make all*
 
-5. *make clean*
+5. *make clean* -> To delete all the files created
 
 ### Run using *Packrat* and *conda env*
 
@@ -82,4 +82,4 @@ Run the following commands in terminal in the given order:
 
 4. *make all*
 
-5. *make clean*
+5. *make clean* -> To delete all the files created

@@ -18,7 +18,11 @@ opt <- parse_args(OptionParser(option_list = option_list))
 read_path <- opt$read
 write_path <- opt$write
 
-library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(readr)
+library(ggplot2)
+library(RColorBrewer)
 library(forcats)
 
 load_train <- paste(read_path, "/train.csv", sep = "")

@@ -19,7 +19,9 @@ opt <- parse_args(OptionParser(option_list = option_list))
 link_train <- opt$train
 link_test <- opt$test
 
-library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(readr)
 
 main <- function(){
   

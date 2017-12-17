@@ -17,7 +17,9 @@ opt <- parse_args(OptionParser(option_list = option_list))
 
 write_path <- opt$write
 
-library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(readr)
 
 main <- function(){
   

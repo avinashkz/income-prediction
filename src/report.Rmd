@@ -21,7 +21,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 ```{r, message=FALSE, warning=FALSE}
-library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(readr)
+library(rmarkdown)
+library(yaml)
 library(knitr)
 ```
 
