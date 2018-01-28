@@ -40,9 +40,6 @@ main <- function(){
   names(train) <- headings
   names(test) <- headings
   
-  train <- train %>% mutate(Salary_Class = if_else(Class == ">50K",true = 1, false = 0))
-  test <- test %>% mutate(Salary_Class = if_else(Class == ">50K",true = 1, false = 0))
-  
   #creating path for saving the file
   save_train <- paste(write_path, "/train.csv", sep = "")
   save_test <- paste(write_path, "/test.csv", sep = "")
