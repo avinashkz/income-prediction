@@ -30,24 +30,39 @@ Adult Dataset from UCI Machine Learning Repository. Also known as "Census Income
 A quick look at the data obtained from the UCI Machine Learning Reposiotry:
 
 
- X1  X2                     X3  X4           X5  X6                   X7                X8              X9      X10      X11   X12   X13  X14             X15   
----  -----------------  ------  ----------  ---  -------------------  ----------------  --------------  ------  -----  -----  ----  ----  --------------  ------
- 39  State-gov           77516  Bachelors    13  Never-married        Adm-clerical      Not-in-family   White   Male    2174     0    40  United-States   <=50K 
- 50  Self-emp-not-inc    83311  Bachelors    13  Married-civ-spouse   Exec-managerial   Husband         White   Male       0     0    13  United-States   <=50K 
+```
+##   X1               X2    X3        X4 X5                 X6
+## 1 39        State-gov 77516 Bachelors 13      Never-married
+## 2 50 Self-emp-not-inc 83311 Bachelors 13 Married-civ-spouse
+##                X7            X8    X9  X10  X11 X12 X13           X14
+## 1    Adm-clerical Not-in-family White Male 2174   0  40 United-States
+## 2 Exec-managerial       Husband White Male    0   0  13 United-States
+##     X15
+## 1 <=50K
+## 2 <=50K
+```
 
 ## Summary of Continuous Variables
 
 Statistical summary of all the continious variables from the dataset:
 
 
-Features      Age   Final_Weight   Education_Num   Capital_Gain   Capital_Loss   Hours_Per_Week   Salary_Class
----------  ------  -------------  --------------  -------------  -------------  ---------------  -------------
-Min.        17.00          12285            1.00              0            0.0             1.00         0.0000
-1st Qu.     28.00         117827            9.00              0            0.0            40.00         0.0000
-Median      37.00         178356           10.00              0            0.0            40.00         0.0000
-Mean        38.58         189778           10.08           1078           87.3            40.44         0.2408
-3rd Qu.     48.00         237051           12.00              0            0.0            45.00         0.0000
-Max.        90.00        1484705           16.00          99999         4356.0            99.00         1.0000
+```
+##   Features   Age Final_Weight Education_Num Capital_Gain Capital_Loss
+## 1  Min.    17.00        12285          1.00            0          0.0
+## 2  1st Qu. 28.00       117827          9.00            0          0.0
+## 3  Median  37.00       178356         10.00            0          0.0
+## 4  Mean    38.58       189778         10.08         1078         87.3
+## 5  3rd Qu. 48.00       237051         12.00            0          0.0
+## 6  Max.    90.00      1484705         16.00        99999       4356.0
+##   Hours_Per_Week Salary_Class
+## 1           1.00       0.0000
+## 2          40.00       0.0000
+## 3          40.00       0.0000
+## 4          40.44       0.2408
+## 5          45.00       0.0000
+## 6          99.00       1.0000
+```
 
 
 ## Data Visualizations
@@ -167,10 +182,11 @@ By performing CrossValidation the optimum value for C was identified as 100 and 
 The figure above shows the variation in the score for varying maximum depths of Random forest classifier.
 
 
-                        Actual Less than 50   Actual More than 50
----------------------  --------------------  --------------------
-Predict Less than 50                  11604                   831
-Predict More than 50                   1629                  2217
+```
+##                      Actual Less than 50 Actual More than 50
+## Predict Less than 50               11604                 831
+## Predict More than 50                1629                2217
+```
 
 The maximum depth for the Random forest was obtained as 16 by using GridSearchCV. For the given model I was able to obtain maximum training score of 88% and testing Score of 86%. Therefore the value obtained using Random Forest Classifier is marginally better than the one obtained using L1 Regularized Logistic Regression Model. The results obtained using the Random Forest Classifier have been reported above in a confusion matrix. 
 
