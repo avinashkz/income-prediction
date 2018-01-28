@@ -82,6 +82,21 @@ Run the following commands in terminal in the given order:
 
 6. *make clean* -> To delete all the files created
 
+
+## Software Dependencies
+
+### R
+
+1. Tidyverse
+2. Optparse
+
+### Python
+
+1. Numpy
+2. Pandas
+3. Matplotlib
+4. Scikit Learn
+
 ## Report
 
 The report for the mini project can be viewed at [Report.md](results/report.md).
