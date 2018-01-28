@@ -12,13 +12,9 @@
 | Date Collected:            | 1996-05-01           |
 
 
-## Question
+## Introduction
 
-Is it possible to correctly identify which `salary-class`(greater than or less than $50k) a person belongs to based on the features such as `age`, `workclass`, `final-weight`, `education`, `education-number`, `marital-status`, `occupation`, `relationship`, `race`, `sex`, `capital-gain`, `capital-loss`, `hours-per-week` and `native-country` ?
-
-## Hypothesis
-
-The hypothesis is that it should be able to accurately identify the `salary-class` of a person based on the given features.
+For this project I will be using some Feature Selection techniques and develop a model that can correctly classify the  `salary-class`(greater than or less than $50k) a person. The features of each person provided in the dataset are `age`, `workclass`, `final-weight`, `education`, `education-number`, `marital-status`, `occupation`, `relationship`, `race`, `sex`, `capital-gain`, `capital-loss`, `hours-per-week` and `native-country` ?
 
 ## Plan of Action
 
@@ -85,3 +81,7 @@ Run the following commands in terminal in the given order:
 5. *make all*
 
 6. *make clean* -> To delete all the files created
+
+## Report
+
+The report for the mini project can be viewed at [Report.md](results/report.md).
