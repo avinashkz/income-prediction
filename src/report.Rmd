@@ -40,7 +40,7 @@ A quick look at the data obtained from the UCI Machine Learning Reposiotry:
 
 ```{r}
 raw_data <- read.csv("../data/train.csv")
-kable(head(raw_data, 2))
+print(head(raw_data, 2))
 ```
 
 ## Summary of Continuous Variables
@@ -49,7 +49,7 @@ Statistical summary of all the continious variables from the dataset:
 
 ```{r}
 summary_df <- read.csv("../doc/data_summary.csv")
-kable(summary_df)
+print(summary_df)
 ```
 
 
@@ -176,7 +176,7 @@ cm <- matrix(c(11604, 1629,831, 2217), nrow = 2)
 colnames(cm) <- c("Actual Less than 50", "Actual More than 50")
 rownames(cm) <- c("Predict Less than 50", "Predict More than 50")
 
-kable(cm)
+print(cm)
 ```
 
 The maximum depth for the Random forest was obtained as 16 by using GridSearchCV. For the given model I was able to obtain maximum training score of 88% and testing Score of 86%. Therefore the value obtained using Random Forest Classifier is marginally better than the one obtained using L1 Regularized Logistic Regression Model. The results obtained using the Random Forest Classifier have been reported above in a confusion matrix. 
